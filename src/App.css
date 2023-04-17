@@ -1,0 +1,36 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-image: url('/banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.movie-name-text{
+  color: white;
+}
+
+.errorMessage-class{
+  background-color: white;
+  border: 2px red solid;
+  width: 25%;
+}
+
+.page-link{
+  border-radius: 10px;
+}
+
+svg[selected]{ /* svg element whose attribute is 'selected' */
+  fill: red;
+}
+
+.paginator{
+  height: 100px;
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+}
