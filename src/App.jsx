@@ -5,6 +5,7 @@ import Title from './components/Title'
 import Error from './components/Error'
 import Cards from './components/Cards'
 import Pagination from './components/Pagination'
+import { useState } from 'react'
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   <>
     <Navbar/>
     <Title/>
-    <Searchbar/>
+    <Searchbar />
     {/* <Error/>  */}
     {/* <Cards/> */}
     {/* <Pagination/> */}
