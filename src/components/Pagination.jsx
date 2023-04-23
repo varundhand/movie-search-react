@@ -1,13 +1,31 @@
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../redux/movieSlice";
+
 const Pagination = () => {
+
+  const dispatch =useDispatch()
+
+  const searchTerm = useSelector((state) => state.movie.searchTerm);
+  const totalResults = useSelector(state => state.movie.totalResults)
+  const totalPages =  parseInt(totalResults/10)
+  console.log(totalPages)
+  const pages = Array.from(Array(totalPages).keys())
+  console.log(pages)
+
+  const handlePageClick = (page) => {
+    console.log(page)
+    dispatch(fetchMovies({searchTerm,pageNo: page+1}))
+  }
+
   return ( 
     <div className="paginator">
       <nav>
         <ul class="pagination pagination-sm">
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">1</span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          {pages.map((page) => {
+            return (
+              <li className="page-item"><a className="page-link" onClick={() => handlePageClick(page)} >{page + 1}</a></li>
+            )
+          })}
         </ul>
       </nav>
     </div>

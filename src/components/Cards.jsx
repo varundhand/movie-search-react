@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 const Cards = () => {
 
   const movies = useSelector(state => state.movie.movies)
-  const foundMovies = useSelector(state => state.movie.foundMovies)
+  // const foundMovies = useSelector(state => state.movie.foundMovies)
   const isLoading = useSelector((state) => state.movie.isLoading)
   const error = useSelector((state) => state.movie.error)
-  const totalResults = useSelector(state => state.movie.totalResults)
 
- 
+
   if (isLoading) {
     return 'loading...'
   }
@@ -30,8 +29,7 @@ const Cards = () => {
                   <p className="card-text">{Type}</p>
               </div>
       </div>)
-      })}
-      
+      })} 
     </div>
     );
   

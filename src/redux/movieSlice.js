@@ -18,10 +18,11 @@ const initialState = {
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
   async (payload, thunkAPI) => {
+    const { searchTerm, pageNo } = payload;
     // payload is the searchTerm now
     console.log(payload);
     const res = await axios(
-      `https://omdbapi.com/?apikey=${API_KEY}&s=${payload}`
+      `https://omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${pageNo}`
     );
     console.log(res);
     const data = res.data;

@@ -15,7 +15,7 @@ const Searchbar = () => {
   };
 
   const handleSearch = () => {
-    dispatch(fetchMovies(searchTerm))
+    dispatch(fetchMovies({searchTerm, pageNo: 1})) // by default first page 
   }
   
   //! use cards component for next return 
