@@ -15,7 +15,7 @@ function App() {
     <Title/>
     <Searchbar />
     {/* <Error/>  */}
-    {/* <Cards/> */}
+    <Cards/>
     {/* <Pagination/> */}
 
   </>

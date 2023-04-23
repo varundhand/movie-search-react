@@ -1,18 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setMovie } from "../redux/movieSlice";
+import { fetchMovies, setMovie } from "../redux/movieSlice";
+import { useEffect } from "react";
 
 const Searchbar = () => {
-  // const [text, setText] = useState("");
-  const movie = useSelector((state) => state.movie.searchTerm);
   const dispatch = useDispatch();
-
+  
+  // movie, isloading and error selectors
+  // store.{sliceName}.{propertyName}
+  const searchTerm = useSelector((state) => state.movie.searchTerm);
+  
   // e.target.value = {target: {value}}
   const handleOnChange = ({ target: { value } }) => {
     dispatch(setMovie(value));
   };
 
-  console.log(movie);
-
+  const handleSearch = () => {
+    dispatch(fetchMovies(searchTerm))
+  }
+  
+  //! use cards component for next return 
+  
   return (
     <div
       className="input-group rounded d-flex w-25 mx-auto"
@@ -21,7 +28,7 @@ const Searchbar = () => {
       <input
         className="form-control rounded "
         onChange={handleOnChange}
-        value={movie}
+        value={searchTerm}
         id="search-btn"
         placeholder="Enter Movie Name"
         aria-label="Search"
@@ -31,9 +38,7 @@ const Searchbar = () => {
         <button
           type="button"
           className="btn btn-danger"
-          onClick={() => {
-            console.log(text);
-          }}
+          onClick={handleSearch}
         >
           Search
         </button>
