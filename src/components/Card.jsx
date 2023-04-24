@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ReactComponent as HeartSvg } from "../../public/heart.svg";
-import { addFavouriteMovie, getFavouriteMovies } from "../redux/movieSlice";
+import { addFavouriteMovie, removeFavouriteMovie } from "../redux/movieSlice";
 import { useDispatch } from "react-redux";
 
 const Card = ({ poster, title, year, imdbID, type, isFavourite }) => {
@@ -22,6 +22,7 @@ const Card = ({ poster, title, year, imdbID, type, isFavourite }) => {
     
     if (isAlreadyLiked) {
       setIsSelected(false);
+      dispatch(removeFavouriteMovie(imdbID))
     } else {
       setIsSelected(true);
       dispatch(addFavouriteMovie(jsonObj))

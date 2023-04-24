@@ -48,8 +48,18 @@ export const getFavouriteMovies = createAsyncThunk(
 export const addFavouriteMovie = createAsyncThunk(
   "movie/addFavouriteMovie",
   async (payload, thunkAPI) => {
-    const response = await axios.post(`http://localhost:5000/movies`, payload);
+    const response = await axios.post(`http://localhost:5000/movies`, payload); // payload is the whole object
     return response.data;
+  }
+);
+
+export const removeFavouriteMovie = createAsyncThunk(
+  "movie/removeFavouriteMovie",
+  async (payload, thunkAPI) => {
+    const response = await axios.delete(
+      `http://localhost:5000/movies/${payload}`
+    );
+    return "movie removed from fav movies";
   }
 );
 

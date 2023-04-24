@@ -22,7 +22,7 @@ const Cards = () => {
   }
 
   const checkSelected = (id) => {
-    return favouriteMovies?.find((movieObj) => movieObj.imdbID === id);
+    return favouriteMovies?.find((movieObj) => movieObj.imdbID === id); // ?. CHECKS WHETHER THE VALUE EXISTS BEFORE ACCESSING IT and if no value, then throws undefined instead of an error
   };
 
   // movies.forEach(({Poster,Title,Type,Year,imdbID}) => {
