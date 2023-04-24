@@ -24,7 +24,7 @@ body{
   border-radius: 10px;
 }
 
-svg[selected]{ /* svg element whose attribute is 'selected' */
+svg.selected { /* svg element whose attribute is 'selected' */
   fill: red;
 }
 

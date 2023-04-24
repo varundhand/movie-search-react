@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ReactComponent as HeartSvg } from "../../public/heart.svg";
+import Card from "./Card";
 
 const Cards = () => {
   const movies = useSelector((state) => state.movie.movies);
@@ -18,19 +19,10 @@ const Cards = () => {
   // movies.forEach(({Poster,Title,Type,Year,imdbID}) => {
   return (
     <div style={{ display: "flex" }}>
-      {movies.map(({ Poster, Title, Type, Year, imdbID }) => {
+      {movies.map(({ Poster, Title, Year, imdbID, Type }) => {
         return (
-          <div className="card" style={{ width: "11rem" }} key={imdbID}>
-            <img src={Poster} className="card-img-top" />
-            <div className="card-body">
-              <h5 className="card-title">{Title}</h5>
-              <p className="card-text">{Year}</p>
-              <p className="d-flex justify-content-center cursor-pointer">
-                <HeartSvg />
-              </p>
-            </div>
-          </div>
-        );
+          <Card poster={Poster} title={Title} year={Year} imdbID={imdbID} key={imdbID} type={Type}/>
+        )
       })}
     </div>
   );

@@ -14,6 +14,9 @@ const initialState = {
   foundMovies: null,
 };
 
+// Create thunk for posting a new movie to database
+// Create thunk for deleteing a movie from database
+
 //! 'payload' is the arugument passed to a redux action
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
@@ -22,12 +25,21 @@ export const fetchMovies = createAsyncThunk(
     // payload is the searchTerm now
     console.log(payload);
     const res = await axios(
+      //axios terminates the .json() step
       `https://omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${pageNo}`
     );
     console.log(res);
     const data = res.data;
     console.log(data);
     return data;
+  }
+);
+
+export const addFavouriteMovie = createAsyncThunk(
+  "movie/addFavouriteMovie",
+  async (payload, thunkAPI) => {
+    const response = await axios.post(`http://localhost:5000/movies`, payload);
+    return response.data;
   }
 );
 
