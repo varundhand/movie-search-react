@@ -12,6 +12,7 @@ const initialState = {
   movies: [],
   totalResults: null,
   foundMovies: null,
+  favouriteMovies: [],
 };
 
 // Create thunk for posting a new movie to database
@@ -28,10 +29,19 @@ export const fetchMovies = createAsyncThunk(
       //axios terminates the .json() step
       `https://omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${pageNo}`
     );
-    console.log(res);
+    // console.log(res);
     const data = res.data;
-    console.log(data);
+    // console.log(data);
     return data;
+  }
+);
+
+export const getFavouriteMovies = createAsyncThunk(
+  "movie/getFavouriteMovies",
+  async (payload, thunkAPI) => {
+    const response = await axios.get(`http://localhost:5000/movies`);
+    // console.log(response.data);
+    return response.data;
   }
 );
 
@@ -67,6 +77,9 @@ export const movieSlice = createSlice({
     builder.addCase(fetchMovies.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;
+    });
+    builder.addCase(getFavouriteMovies.fulfilled, (state, action) => {
+      state.favouriteMovies = action.payload;
     });
   },
 });

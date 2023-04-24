@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 
@@ -7,6 +7,11 @@ const Cards = () => {
   // const foundMovies = useSelector(state => state.movie.foundMovies)
   const isLoading = useSelector((state) => state.movie.isLoading);
   const error = useSelector((state) => state.movie.error);
+  const favouriteMovies = useSelector((state) => state.movie.favouriteMovies);
+
+  console.log(favouriteMovies);
+
+  // console.log( favouriteMovies.length);
 
   if (isLoading) {
     return "loading...";
@@ -16,13 +21,30 @@ const Cards = () => {
     return error;
   }
 
+  const checkSelected = (id) => {
+    return favouriteMovies?.find((movieObj) => movieObj.imdbID === id);
+  };
+
   // movies.forEach(({Poster,Title,Type,Year,imdbID}) => {
   return (
     <div style={{ display: "flex" }}>
       {movies.map(({ Poster, Title, Year, imdbID, Type }) => {
+        console.log({ imdbID });
+
+        // Check if current cardId exists in our favourite movies array
+        const favouriteMovie = checkSelected(imdbID);
+
         return (
-          <Card poster={Poster} title={Title} year={Year} imdbID={imdbID} key={imdbID} type={Type}/>
-        )
+          <Card
+            poster={Poster}
+            title={Title}
+            year={Year}
+            imdbID={imdbID}
+            key={imdbID}
+            type={Type}
+            isFavourite={favouriteMovie ? true : false}
+          />
+        );
       })}
     </div>
   );

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { ReactComponent as HeartSvg } from "../../public/heart.svg";
-import { addFavouriteMovie } from "../redux/movieSlice";
+import { addFavouriteMovie, getFavouriteMovies } from "../redux/movieSlice";
 import { useDispatch } from "react-redux";
 
-const Card = ({ poster, title, year, imdbID, type }) => {
+const Card = ({ poster, title, year, imdbID, type, isFavourite }) => {
   const dispatch = useDispatch()
-  const [isSelected, setIsSelected] = useState();
+  const [isSelected, setIsSelected] = useState(isFavourite);
 
   const handleLike = (e) => {
     const jsonObj = {

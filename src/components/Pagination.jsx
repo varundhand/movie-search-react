@@ -9,10 +9,10 @@ const Pagination = () => {
   const totalPages = parseInt(totalResults / 10);
   console.log(totalPages);
   const pages = Array.from(Array(totalPages).keys());
-  console.log(pages);
+  // console.log(pages);
 
   const handlePageClick = (page) => {
-    console.log(page);
+    // console.log(page);
     dispatch(fetchMovies({ searchTerm, pageNo: page + 1 }));
   };
 
