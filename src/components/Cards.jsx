@@ -9,8 +9,6 @@ const Cards = () => {
   const error = useSelector((state) => state.movie.error);
   const favouriteMovies = useSelector((state) => state.movie.favouriteMovies);
 
-  console.log(favouriteMovies);
-
   // console.log( favouriteMovies.length);
 
   if (isLoading) {
