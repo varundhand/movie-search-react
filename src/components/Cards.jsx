@@ -25,7 +25,7 @@ const Cards = () => {
 
   // movies.forEach(({Poster,Title,Type,Year,imdbID}) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex",padding:'20px' }}>
       {movies.map(({ Poster, Title, Year, imdbID, Type }) => {
         console.log({ imdbID });
 

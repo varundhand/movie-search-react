@@ -20,6 +20,9 @@ export const Modal = () => {
 
   return (
     <SemanticModal
+    size='large'
+    centered
+    
       onClose={() => dispatch(setModal(false))}
       onOpen={() => dispatch(setModal(true))}
       open={isOpen}
@@ -36,6 +39,7 @@ export const Modal = () => {
                 <Table.HeaderCell>Movie</Table.HeaderCell>
                 <Table.HeaderCell>Released On</Table.HeaderCell>
                 <Table.HeaderCell>Type</Table.HeaderCell>
+                <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>

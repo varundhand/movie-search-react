@@ -2,7 +2,7 @@ const Title = () => {
   return ( 
 
   <div className="sub-body">
-    <div className="movie-name-text p-5 text-center ">
+    <div className="title movie-name-text p-5 text-center text-black">
       <h1>Unlimited movies, TV</h1>
       <h1>shows and more.</h1>
       <h3>Watch anywhere. Cancel anytime.</h3>

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 const API_KEY = "4f7285dc";
@@ -96,6 +95,17 @@ export const movieSlice = createSlice({
     builder.addCase(getFavouriteMovies.fulfilled, (state, action) => {
       state.favouriteMovies = action.payload;
     });
+    builder.addCase(removeFavouriteMovie.fulfilled, (state, action) => {
+      console.log("Runs this");
+      const movieId = action.meta.arg;
+
+      state.favouriteMovies = state.favouriteMovies.filter(
+        (movieObj, index) => {
+          return movieObj.imdbID !== movieId;
+        }
+      );
+    });
+    // Add a case for removeMovie.fulfilled
   },
 });
 
