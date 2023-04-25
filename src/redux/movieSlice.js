@@ -5,7 +5,7 @@ import axios from "axios";
 const API_KEY = "4f7285dc";
 
 const initialState = {
-  //useSelector selects these
+  //! to select this state we use useSelector Hook
   searchTerm: "",
   isLoading: false,
   error: null,
@@ -13,6 +13,7 @@ const initialState = {
   totalResults: null,
   foundMovies: null,
   favouriteMovies: [],
+  isModalOpen: false,
 };
 
 // Create thunk for posting a new movie to database
@@ -67,9 +68,13 @@ export const movieSlice = createSlice({
   name: "movie",
   initialState,
   reducers: {
+    // Actions are defined here //! to access these Actions in reducers we use useDispatch Hook
     setMovie: (state, action) => {
       state.searchTerm = action.payload;
       // state.push(action.payload);
+    },
+    setModal: (state, action) => {
+      state.isModalOpen = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -95,6 +100,6 @@ export const movieSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setMovie } = movieSlice.actions;
+export const { setMovie, setModal } = movieSlice.actions;
 
 export default movieSlice.reducer;

@@ -1,4 +1,5 @@
 import "./App.css";
+import 'semantic-ui-css/semantic.min.css'
 import Navbar from "./components/Navbar";
 import Searchbar from "./components/Searchbar";
 import Title from "./components/Title";
@@ -8,6 +9,7 @@ import Pagination from "./components/Pagination";
 import { useState, useEffect } from "react";
 import { getFavouriteMovies } from "./redux/movieSlice";
 import { useDispatch } from "react-redux";
+import { Modal } from "./components/Modal";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ function App() {
       <Navbar />
       <Title />
       <Searchbar />
+      <Modal />
       {/* <Error/>  */}
       <Cards />
       <Pagination />

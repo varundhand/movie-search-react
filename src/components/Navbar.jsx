@@ -1,6 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setModal } from "../redux/movieSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+
+  const handleButtonClick = () => {
+    dispatch(setModal(true))    
+  }
+
   return ( 
   <>
     <nav className="navbar d-flex m-3 bg-*">
@@ -17,7 +25,7 @@ const Navbar = () => {
             </ul>
             <ul className="nav nav-pills justify-content-end ">
               <li className="nav-item ">
-                <a className="nav-link bg-danger text-bg-danger" aria-current="page" href="#">Active</a>
+                <a className="nav-link bg-danger text-bg-danger" aria-current="page" onClick={handleButtonClick}>Favourites</a>
               </li>
             </ul>
           </li>
