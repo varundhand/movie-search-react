@@ -7,7 +7,7 @@ const Pagination = () => {
   const searchTerm = useSelector((state) => state.movie.searchTerm);
   const totalResults = useSelector((state) => state.movie.totalResults);
   const totalPages = parseInt(totalResults / 10);
-  console.log(totalPages);
+  // console.log(totalPages);
   const pages = Array.from(Array(totalPages).keys());
   // console.log(pages);
 

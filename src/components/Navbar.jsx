@@ -1,11 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setModal } from "../redux/movieSlice";
+import { getFavouriteMovies } from "../redux/movieSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch()
 
   const handleButtonClick = () => {
+    dispatch(getFavouriteMovies())
     dispatch(setModal(true))    
   }
 
@@ -25,7 +27,7 @@ const Navbar = () => {
             </ul>
             <ul className="nav nav-pills justify-content-end ">
               <li className="nav-item ">
-                <a className="nav-link bg-danger text-bg-danger" aria-current="page" onClick={handleButtonClick}>Favourites</a>
+                <a className="nav-link bg-danger text-bg-danger" aria-current="page" style={{cursor:'pointer'}} onClick={handleButtonClick}>Favourites</a>
               </li>
             </ul>
           </li>

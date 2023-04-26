@@ -13,9 +13,13 @@ const Searchbar = () => {
   const handleOnChange = ({ target: { value } }) => {
     dispatch(setMovie(value));
   };
-
+  
   const handleSearch = () => {
-    dispatch(fetchMovies({searchTerm, pageNo: 1})) // by default first page 
+    if (searchTerm){
+      dispatch(fetchMovies({searchTerm , pageNo: 1})) // by default first page 
+    }else{
+      window.alert('enter valid input')
+    }
   }
   
   //! use cards component for next return 
@@ -38,6 +42,7 @@ const Searchbar = () => {
         <button
           type="button"
           className="btn btn-danger"
+          style={{cursor:'pointer'}}
           onClick={handleSearch}
         >
           Search

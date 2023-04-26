@@ -7,7 +7,7 @@ body{
   background-image: url('/banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100vh; 
 }
 
 .movie-name-text{
