@@ -4,7 +4,7 @@ import { ReactComponent as TrashSvg } from "../../public/trash.svg"; // we used 
 import { useDispatch } from "react-redux";
 import { removeFavouriteMovie } from "../redux/movieSlice";
 
-const ModalTable = ({ movie: { Title, Year, Type, imdbID } }) => {
+const ModalTable = ({ movie: { Title, Year, Type, imdbID } }) => {   // the prop passed was a nested object
   const dispatch = useDispatch()
 
   const handleDelete = () => {
